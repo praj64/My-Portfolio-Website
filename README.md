@@ -6,5 +6,6 @@ Features:
 
 Tech Stack: HTML, CSS and JavaScript, particle.js
 
-Hosted Link:
+Live Demo:
+https://frolicking-bombolone-e5e2d2.netlify.app
 
