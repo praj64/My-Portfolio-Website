@@ -31,6 +31,7 @@ $(document).ready(function(){
     $('.menu-btn').click(function(){
         $('.navbar .menu').toggleClass("active");
         $('.menu-btn i').toggleClass("active");
+        $('body').toggleClass("no-scroll");
     });
 
     // typing text animation script
@@ -70,4 +71,38 @@ $(document).ready(function(){
             }
         }
     });
+});
+
+document.querySelectorAll('.menu a').forEach(function(item) {
+    item.addEventListener('click', function(event) {
+        document.querySelectorAll('.menu li a').forEach(function(el) {
+            el.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
+
+// Intersection Observer setup
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add 'active' class when element enters the viewport
+            entry.target.classList.add('active');
+        }
+    });
+});
+
+// Select all timeline elements
+const timelineElements = document.querySelectorAll('.vertical-timeline-element');
+
+// Loop through timeline elements to add appropriate class
+timelineElements.forEach((element, index) => {
+    if (index % 2 === 0) {
+        element.classList.add('even');
+    } else {
+        element.classList.add('odd');
+    }
+    
+    // Observe each timeline element
+    observer.observe(element);
 });
